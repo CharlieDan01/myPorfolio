@@ -1,0 +1,76 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+footer a:hover {
+  color: #0d6efd;
+  transition: color 0.3s ease;
+}
+
+/* Skills icons styling */
+/* Skills icons styling: use a wrapper .skill-icon so sizing is reliable and responsive */
+.skills-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem; /* espacio entre iconos */
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Cada icono está dentro de .skill-icon; usamos clamp() para que el tamaño escale
+   entre un mínimo y máximo razonable dependiendo del viewport. */
+.skill-icon {
+  width: clamp(50px, 4.5vw, 56px); /* mínimo 40px, preferible ~50px en pantallas medias, máx 56px */
+  height: clamp(50px, 4.5vw, 56px);
+  display: inline-block;
+  flex: 0 0 auto; /* que no crezca ni encoja dentro del flex */
+}
+
+.skill-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* mantiene proporción dentro del recuadro */
+  display: block;
+}
+
+/* Ajustes adicionales para telas muy pequeñas */
+@media (max-width: 420px) {
+  .skill-icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Figura + caption para cada skill */
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem; /* espacio entre caption y la imagen */
+  text-align: center;
+  font-family: inherit;
+}
+
+.skill-item figcaption {
+  font-size: 0.75rem;
+  color: #333;
+  line-height: 1;
+  margin: 0; /* el gap maneja el espaciado */
+}
+
+/* Si quieres captions más discretos en pantallas pequeñas */
+@media (max-width: 420px) {
+  .skill-item figcaption {
+    font-size: 0.65rem;
+  }
+}

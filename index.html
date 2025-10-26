@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Zúñiga TI | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Tu CSS personalizado -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <!--js personalizado-->
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <main>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+            <a class="navbar-brand" href="#">Daniel Zúñiga</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                </ul>
+            </div>
+            </div>
+            
+        </nav>
+
+        <!-- About Section -->
+        <section id="about" class="py-5 text-center">
+            <div class="container">
+            <h1 class="fw-bold">Hi, I'm Daniel 👋</h1>
+            <p class="lead">I'm a Computer engineer focused on building clean, functional web applications.</p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-5 bg-light">
+            <div class="container">
+            <h2 class="mb-4 text-center">Projects</h2>
+            <div class="row">
+                <!-- Ejemplo de proyecto -->
+                <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <img src="img/project1.jpg" class="card-img-top" alt="Project 1" />
+                    <div class="card-body">
+                    <h5 class="card-title">To-Do List App</h5>
+                    <p class="card-text">A task management app built with ASP.NET Web Forms and MySQL.</p>
+                    <a href="#" class="btn btn-primary" target="_blank">View Project</a>
+                    </div>
+                </div>
+                </div>
+                <!-- Repite más columnas para otros proyectos -->
+            </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-5 text-center">
+            <div class="container">
+            <h2>Contact Me</h2>
+            <p>If you’d like to work together, feel free to reach out!</p>
+            <a id="sendemail" href="mailto:danielzc79@gmail.com" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">Send Email</a>
+            </div>
+        </section>
+        <hr>
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+        <div class="skills-grid">
+            <div class="container">
+                
+                    <h2>Tech Stack</h2>
+                    <p>These are the languages, frameworks, and tools I use to build applications:</p>
+                    <!-- Lenguajes -->
+                    <div class="skill-category">
+                    <h4>Languages</h4>
+                    <div class="skills-icons">
+                        <figure class="skill-item"><figcaption>C#</figcaption><div class="skill-icon"><img src="img/cSharp.png" alt="C#" title="C#"></div></figure>
+                        <figure class="skill-item"><figcaption>Java</figcaption><div class="skill-icon"><img src="img/java.png" alt="Java" title="Java"></div></figure>
+                        <!--<figure class="skill-item"><figcaption>Python</figcaption><div class="skill-icon"><img src="img/python.png" alt="Python" title="Python"></div></figure>-->
+                        <figure class="skill-item"><figcaption>HTML</figcaption><div class="skill-icon"><img src="img/html.png" alt="HTML" title="HTML"></div></figure>
+                        <figure class="skill-item"><figcaption>CSS</figcaption><div class="skill-icon"><img src="img/css.png" alt="CSS" title="CSS"></div></figure>
+                        <figure class="skill-item"><figcaption>JavaScript</figcaption><div class="skill-icon"><img src="img/javascript.png" alt="JavaScript" title="JavaScript"></div></figure>
+                    </div>
+                    </div>
+
+                    <!-- Frameworks -->
+                    <div class="skill-category">
+                    <h4>Frameworks</h4>
+                    <div class="skills-icons">
+                        <figure class="skill-item"><figcaption>ASP.NET</figcaption><div class="skill-icon"><img src="img/aspnet.png" alt="ASP.NET" title="ASP.NET"></div></figure>
+                        <figure class="skill-item"><figcaption>Astro.js</figcaption><div class="skill-icon"><img src="img/astro.png" alt="Astro.js" title="Astro.js"></div></figure>
+                        <figure class="skill-item"><figcaption>Bootstrap</figcaption><div class="skill-icon"><img src="img/bootstrap.png" alt="Bootstrap" title="Bootstrap"></div></figure>
+                    </div>
+                    </div>
+
+                    <!-- Bases de datos -->
+                    <div class="skill-category">
+                    <h4>Databases</h4>
+                    <div class="skills-icons">
+                        <figure class="skill-item"><figcaption>MySQL</figcaption><div class="skill-icon"><img src="img/mysql.png" alt="MySQL" title="MySQL"></div></figure>
+                        <figure class="skill-item"><figcaption>SQL Server</figcaption><div class="skill-icon"><img src="img/sqlserver.png" alt="SQL Server" title="SQL Server"></div></figure>
+                    </div>
+                    </div>
+
+                    <!-- Herramientas -->
+                    <div class="skill-category">
+                    <h4>Tools</h4>
+                    <div class="skills-icons">
+                        <figure class="skill-item"><figcaption>Visual Studio</figcaption><div class="skill-icon"><img src="img/visualstudio.png" alt="Visual Studio" title="Visual Studio"></div></figure>
+                        <figure class="skill-item"><figcaption>GitHub</figcaption><div class="skill-icon"><img src="img/github.png" alt="GitHub" title="GitHub"></div></figure>
+                        <figure class="skill-item"><figcaption>VS Code</figcaption><div class="skill-icon"><img src="img/vscode.png" alt="VS Code" title="VS Code"></div></figure>
+                    </div>
+                    </div>
+                
+
+            </div>
+        </div>
+    </div>
+    </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3"> 
+        <p class="mb-0">© <span id="currentYear"></span> Daniel Zúñiga. All rights reserved.</p> <!--obtenemos el año con js--> 
+        <small class="text-secondary d-block mt-1"> 
+            Icons by <a href="https://www.flaticon.com/authors/freepik" class="" target="_blank" rel="noopener noreferrer"> Freepik </a> 
+            from <a href="https://www.flaticon.com/" class="" target="_blank" rel="noopener noreferrer"> Flaticon </a>. 
+        </small> 
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
