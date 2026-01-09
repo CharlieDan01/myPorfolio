@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="mt-3">
                             <span class="badge bg-dark text-info border border-info mb-3">${repo.language || 'Code'}</span>
                         </div>
-                        <a href="${repo.html_url}" class="btn btn-outline-primary btn-sm w-100" target="_blank">
+                        <a href="${repo.html_url}" class="btn btn-outline-success btn-sm w-100" target="_blank">
                             View Repository
                         </a>
                     </div>
