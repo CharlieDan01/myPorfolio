@@ -47,7 +47,7 @@ const translations = {
         "nav-skills": "Habilidades",
         "nav-faq": "Preguntas",
         "about-title": "Hola, soy Daniel 👋",
-        "about-description": "Soy un Ingeniero en Computación enfocado en crear aplicaciones web limpias y funcionales.",
+        "about-description": "Soy un Ingeniero en Informática, enfocado en crear aplicaciones web limpias y funcionales.",
         "projects-title": "Proyectos",
         "project-title-1": "Lista de Tareas",
         "project-description-1": "App de gestión de tareas construida con ASP.NET Web Forms y MySQL.",
