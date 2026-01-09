@@ -10,7 +10,7 @@
     <!--js personalizado-->
     <script src="js/index.js"></script>
 </head>
-<body>
+<body data-bs-theme="dark">
     <main>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -33,24 +33,19 @@
             
         </nav>
         <!--div translate-->
-        <div class="container text-end mt-3 text-center">
-            <button id="btn-translate" class="btn btn-outline-primary btn-lg">
-                🌐 Traducir / Translate
-            </button>
-            
-            <div id="google_translate_element" style="display:none;"></div>
-        </div>
-
-        <!-- About Section -->
-        <section id="about" class="py-5 text-center">
-            <div class="container">
-            <h1 class="fw-bold" data-i18n="about-title">Hi, I'm Daniel 👋</h1>
-            <p class="lead" data-i18n="about-description">I'm a Computer engineer focused on building clean, functional web applications.</p>
+        <div id="myname" class="container-fluid text-center d-flex align-items-center justify-content-center">
+            <div class="hero-content">
+                <h1 class="display-3 fw-bold text-white mb-3" data-i18n="about-title">Hi, I'm Daniel 👋</h1>
+                <p class="lead text-white mb-4" data-i18n="about-description">I'm a Computer engineer focused on building clean, functional web applications.</p>
+                
+                <button id="btn-translate" class="btn btn-primary btn-lg shadow">
+                    🌐 Traducir / Translate
+                </button>
             </div>
-        </section>
-
+        </div>
+        
         <!-- Projects Section -->
-        <section id="projects" class="py-5 bg-light">
+        <section id="projects" class="py-5">
             <div class="container">
             <h2 class="mb-4 text-center" data-i18n="projects-title">Projects</h2>
             <div class="row">
@@ -61,7 +56,7 @@
                     <div class="card-body">
                     <h5 class="card-title" data-i18n="project-title-1">To-Do List App</h5>
                     <p class="card-text" data-i18n="project-description-1">A task management app built with ASP.NET Web Forms and MySQL.</p>
-                    <a href="https://github.com/CharlieDan01/todolist" class="btn btn-primary" target="_blank" data-i18n="btn-View-p1">View Project</a>
+                    <a href="https://github.com/CharlieDan01/todolist" class="btn btn-success" target="_blank" data-i18n="btn-View-p1">View Project</a>
                     </div>
                 </div>
                 </div>
@@ -70,33 +65,36 @@
             </div>
         </section>
 
-        <hr>
-
         <!-- Contact Section -->
         <section id="contact" class="py-5 text-center">
             <div class="container">
-            <h2 data-i18n="contact-title">Contact Me</h2>
-            <p data-i18n="contact-description">If you’d like to work together, feel free to reach out!</p>
-            <a id="sendemail" href="mailto:danielzc79@gmail.com" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer" data-i18n="contact-btn">Send Email</a>
+                <h2 class="display-5 fw-bold mb-3" data-i18n="contact-title">Contact Me</h2>
+                <p class="lead mb-4" data-i18n="contact-description">If you’d like to work together, feel free to reach out!</p>
+                
+                <a id="sendemail" href="mailto:danielzc79@gmail.com" 
+                class="btn btn-danger btn-lg px-5 shadow-lg" 
+                target="_blank" rel="noopener noreferrer" data-i18n="contact-btn">
+                Send Email
+                </a>
             </div>
         </section>
-        <hr>
 
         <!-- FAQ Section -->
-        <section id="faq" class="py-5 bg-light">
+        <section id="faq" class="py-5">
             <div class="container">
                 <h2 class="text-center mb-5" data-i18n="faq-title">Question & Answer</h2>
+                <h5 class="text-center mb-4" data-i18n="faq-instruction">Click in the question if you want to see the answer</h5>
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="accordion" id="accordionExample">
                             
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"  data-i18n="faq-q1">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" data-i18n="faq-q1">
                                         What is your availability for new projects?
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" data-i18n="faq-a1">
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" data-i18n="faq-a1">
                                     <div class="accordion-body">
                                         Actually, I am open to new opportunities and projects. Feel free to reach out to discuss how we can collaborate!
                                     </div>
@@ -136,59 +134,61 @@
         </section>
         <hr>
         <!-- Skills Section -->
-        <section id="skills" class="skills-section">
-        <div class="skills-grid">
+        <section id="skills" class="py-5">
             <div class="container">
-                
-                    <h2 data-i18n="skills-title">Tech Stack</h2>
-                    <p data-i18n="skills-description">These are the languages, frameworks, and tools I use to build applications:</p>
-                    <!-- Lenguajes -->
-                    <div class="skill-category">
-                    <h4 data-i18n="skills-languages">Languages</h4>
-                    <div class="skills-icons">
-                        <figure class="skill-item"><figcaption>C#</figcaption><div class="skill-icon"><img src="img/cSharp.png" alt="C#" title="C#"></div></figure>
-                        <figure class="skill-item"><figcaption>Java</figcaption><div class="skill-icon"><img src="img/java.png" alt="Java" title="Java"></div></figure>
-                        <!--<figure class="skill-item"><figcaption>Python</figcaption><div class="skill-icon"><img src="img/python.png" alt="Python" title="Python"></div></figure>-->
-                        <figure class="skill-item"><figcaption>HTML</figcaption><div class="skill-icon"><img src="img/html.png" alt="HTML" title="HTML"></div></figure>
-                        <figure class="skill-item"><figcaption>CSS</figcaption><div class="skill-icon"><img src="img/css.png" alt="CSS" title="CSS"></div></figure>
-                        <figure class="skill-item"><figcaption>JavaScript</figcaption><div class="skill-icon"><img src="img/javascript.png" alt="JavaScript" title="JavaScript"></div></figure>
-                    </div>
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold" data-i18n="skills-title">Tech Stack</h2>
+                    <p class="text-secondary" data-i18n="skills-description">The languages, frameworks, and tools I use to build applications:</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="skill-category-card">
+                            <h5 class="category-title" data-i18n="skills-languages">Languages</h5>
+                            <div class="skills-flex">
+                                <figure class="skill-card"><div class="icon-box"><img src="img/cSharp.png" alt="C#"></div><figcaption>C#</figcaption></figure>
+                                <figure class="skill-card"><div class="icon-box"><img src="img/java.png" alt="Java"></div><figcaption>Java</figcaption></figure>
+                                <figure class="skill-card"><div class="icon-box"><img src="img/html.png" alt="HTML"></div><figcaption>HTML</figcaption></figure>
+                                <figure class="skill-card"><div class="icon-box"><img src="img/css.png" alt="CSS"></div><figcaption>CSS</figcaption></figure>
+                                <figure class="skill-card"><div class="icon-box"><img src="img/javascript.png" alt="JS"></div><figcaption>JavaScript</figcaption></figure>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Frameworks -->
-                    <div class="skill-category">
-                    <h4 data-i18n="skills-frameworks">Frameworks</h4>
-                    <div class="skills-icons">
-                        <figure class="skill-item"><figcaption>ASP.NET</figcaption><div class="skill-icon"><img src="img/aspnet.png" alt="ASP.NET" title="ASP.NET"></div></figure>
-                        <figure class="skill-item"><figcaption>Astro.js</figcaption><div class="skill-icon"><img src="img/astro.png" alt="Astro.js" title="Astro.js"></div></figure>
-                        <figure class="skill-item"><figcaption>Bootstrap</figcaption><div class="skill-icon"><img src="img/bootstrap.png" alt="Bootstrap" title="Bootstrap"></div></figure>
-                    </div>
-                    </div>
-
-                    <!-- Bases de datos -->
-                    <div class="skill-category">
-                    <h4 data-i18n="skills-databases">Databases</h4>
-                    <div class="skills-icons">
-                        <figure class="skill-item"><figcaption>MySQL</figcaption><div class="skill-icon"><img src="img/mysql.png" alt="MySQL" title="MySQL"></div></figure>
-                        <figure class="skill-item"><figcaption>SQL Server</figcaption><div class="skill-icon"><img src="img/sqlserver.png" alt="SQL Server" title="SQL Server"></div></figure>
-                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="skill-category-card">
+                            <h5 class="category-title" data-i18n="skills-frameworks">Frameworks</h5>
+                            <div class="skills-flex">
+                                <figure class="skill-card"><div class="icon-box"><img src="img/aspnet.png" alt="ASP.NET"></div><figcaption>ASP.NET</figcaption></figure>
+                                <figure class="skill-card"><div class="icon-box"><img src="img/astro.png" alt="Astro"></div><figcaption>Astro.js</figcaption></figure>
+                                <figure class="skill-card"><div class="icon-box"><img src="img/bootstrap.png" alt="Bootstrap"></div><figcaption>Bootstrap</figcaption></figure>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Herramientas -->
-                    <div class="skill-category">
-                    <h4 data-i18n="skills-tools">Tools</h4>
-                    <div class="skills-icons">
-                        <figure class="skill-item"><figcaption>Visual Studio</figcaption><div class="skill-icon"><img src="img/visualstudio.png" alt="Visual Studio" title="Visual Studio"></div></figure>
-                        <figure class="skill-item"><figcaption>GitHub</figcaption><div class="skill-icon"><img src="img/github.png" alt="GitHub" title="GitHub"></div></figure>
-                        <figure class="skill-item"><figcaption>VS Code</figcaption><div class="skill-icon"><img src="img/vscode.png" alt="VS Code" title="VS Code"></div></figure>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="skill-category-card">
+                            <h5 class="category-title" data-i18n="skills-databases">Databases</h5>
+                            <div class="skills-flex">
+                                <figure class="skill-card"><div class="icon-box"><img src="img/mysql.png" alt="MySQL"></div><figcaption>MySQL</figcaption></figure>
+                                <figure class="skill-card"><div class="icon-box"><img src="img/sqlserver.png" alt="SQL Server"></div><figcaption>SQL Server</figcaption></figure>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                
 
+                    <div class="col-md-6 col-lg-3">
+                        <div class="skill-category-card">
+                            <h5 class="category-title" data-i18n="skills-tools">Tools</h5>
+                            <div class="skills-flex">
+                                <figure class="skill-card"><div class="icon-box"><img src="img/visualstudio.png" alt="VS"></div><figcaption>Visual Studio</figcaption></figure>
+                                <figure class="skill-card"><div class="icon-box"><img src="img/github.png" alt="GitHub"></div><figcaption>GitHub</figcaption></figure>
+                                <figure class="skill-card"><div class="icon-box"><img src="img/vscode.png" alt="VS Code"></div><figcaption>VS Code</figcaption></figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    </section>
+        </section>
 
     </main>
 
@@ -203,6 +203,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </html>
