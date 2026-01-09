@@ -189,3 +189,18 @@ footer a:hover {
     line-height: 1.6;
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+/* Ajuste para las tarjetas de proyectos dinámicas */
+#github-projects-container .card {
+    background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+#github-projects-container .card:hover {
+    transform: translateY(-10px);
+    border-color: #0d6efd !important;
+}
+
+.card-title {
+    text-transform: capitalize;
+}

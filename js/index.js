@@ -108,3 +108,53 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. ESCRIBE AQUÍ LOS NOMBRES DE TUS REPOS EXACTAMENTE COMO ESTÁN EN GITHUB
+    const myProjects = ["todolist", "WeatherWithApi", "mi-otro-proyecto"]; 
+    const githubUser = "CharlieDan01";
+    const container = document.getElementById("github-projects-container");
+
+    async function fetchProjects() {
+        try {
+            container.innerHTML = ""; // Limpiar el spinner de carga
+
+            for (const repoName of myProjects) {
+                const response = await fetch(`https://api.github.com/repos/${githubUser}/${repoName}`);
+                const repo = await response.json();
+
+                if (response.ok) {
+                    renderCard(repo);
+                }
+            }
+        } catch (error) {
+            console.error("Error al cargar repositorios:", error);
+            container.innerHTML = "<p class='text-center'>Error loading projects.</p>";
+        }
+    }
+
+    function renderCard(repo) {
+        // Usamos una imagen por defecto si el repo no tiene "Social Preview"
+        const card = `
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100 skill-category-card" style="border: 1px solid rgba(255,255,255,0.1);">
+                    <div class="card-body d-flex flex-direction-column flex-column">
+                        <h5 class="card-title fw-bold text-primary">${repo.name}</h5>
+                        <p class="card-text text-secondary small" style="flex: 1;">
+                            ${repo.description || "No description available."}
+                        </p>
+                        <div class="mt-3">
+                            <span class="badge bg-dark text-info border border-info mb-3">${repo.language || 'Code'}</span>
+                        </div>
+                        <a href="${repo.html_url}" class="btn btn-outline-primary btn-sm w-100" target="_blank">
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.innerHTML += card;
+    }
+
+    fetchProjects();
+});
