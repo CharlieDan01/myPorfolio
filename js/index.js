@@ -12,6 +12,7 @@ const translations = {
         "nav-about": "About",
         "nav-projects": "Projects",
         "nav-contact": "Contact",
+        "nav-buildpc": "Build PC",
         "nav-skills": "Skills",
         "nav-faq": "FAQ",
         "about-title": "Hi, I'm Daniel 👋",
@@ -23,6 +24,9 @@ const translations = {
         "contact-title": "Contact Me",
         "contact-description": "If you’d like to work together, feel free to reach out!",
         "contact-btn": "Send Email",
+        "buildpc-title": "Computer Building Service",
+        "buildpc-description": "I also offer custom PC building services tailored to your needs. Whether it's for gaming, work, or general use, I can help you assemble the perfect machine.",
+        "buildpc-contact-btn": "Commit to us",
         "faq-title": "Question & Answer",
         "faq-instruction": "Click in the question if you want to see the answer",
         "faq-q1": "What is your availability for new projects?",
@@ -44,6 +48,7 @@ const translations = {
         "nav-about": "Sobre mí",
         "nav-projects": "Proyectos",
         "nav-contact": "Contacto",
+        "nav-buildpc": "Ensamblaje de PC",
         "nav-skills": "Habilidades",
         "nav-faq": "Preguntas",
         "about-title": "Hola, soy Daniel 👋",
@@ -55,6 +60,9 @@ const translations = {
         "contact-title": "Contáctame",
         "contact-description": "Si te gustaría trabajar conmigo, ¡no dudes en contactarme!",
         "contact-btn": "Enviar Correo",
+        "buildpc-title": "Servicio de Ensamblaje de PCs",
+        "buildpc-description": "También ofrezco servicios de ensamblaje de PCs personalizados según tus necesidades. Ya sea para gaming, trabajo o uso general, puedo ayudarte a armar la máquina perfecta.",
+        "buildpc-contact-btn": "Cotiza con nosotros",
         "faq-title": "Preguntas y Respuestas",
         "faq-instruction": "Haz clic en la pregunta si quieres ver la respuesta",
         "faq-q1": "¿Cuál es tu disponibilidad para nuevos proyectos?",
@@ -75,7 +83,8 @@ const translations = {
 };
 
 let currentLang = "en";
-
+// Función para traducir el contenido
+// Escuchar el clic en el botón de traducción
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Lógica del año (ya la tenías)
     const yearSpan = document.getElementById("currentYear");
@@ -108,10 +117,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-
+// Lógica para cargar proyectos desde GitHub en un contenedor específico
 document.addEventListener("DOMContentLoaded", () => {
     // 1. ESCRIBE AQUÍ LOS NOMBRES DE TUS REPOS EXACTAMENTE COMO ESTÁN EN GITHUB
-    const myProjects = ["todolist", "WeatherWithApi", "mi-otro-proyecto"]; 
+    const myProjects = ["todolist", "WeatherWithApi"]; 
     const githubUser = "CharlieDan01";
     const container = document.getElementById("github-projects-container");
 
@@ -158,3 +167,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetchProjects();
 });
+
+

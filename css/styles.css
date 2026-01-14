@@ -204,3 +204,25 @@ footer a:hover {
 .card-title {
     text-transform: capitalize;
 }
+
+/* Fuerza a que todas las imágenes de la galería tengan el mismo tamaño */
+.custom-img {
+    width: 100%;
+    /* Puedes usar una altura fija (ej. 250px) o un ratio (ej. 1/1 para cuadrados) */
+    aspect-ratio: 4 / 3; 
+    object-fit: cover; /* Corta los bordes sobrantes para no deformar la imagen */
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.gallery-item {
+    overflow: hidden; /* Evita que la imagen se salga del cuadro al hacer zoom */
+    background-color: #1a1a1a; /* Fondo oscuro por si la imagen tarda en cargar */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Efecto opcional para que se vea "bonito" al pasar el mouse */
+.gallery-item:hover .custom-img {
+    transform: scale(1.08);
+}
