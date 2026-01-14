@@ -208,11 +208,9 @@ footer a:hover {
 /* Fuerza a que todas las imágenes de la galería tengan el mismo tamaño */
 .custom-img {
     width: 100%;
-    /* Puedes usar una altura fija (ej. 250px) o un ratio (ej. 1/1 para cuadrados) */
-    aspect-ratio: 4 / 3; 
-    object-fit: cover; /* Corta los bordes sobrantes para no deformar la imagen */
-    transition: transform 0.3s ease;
-    display: block;
+    aspect-ratio: 1 / 1; /* Esto las hace cuadradas y simétricas */
+    object-fit: cover;   /* Evita que se estiren, cortando los bordes sobrantes */
+    border-radius: 12px;
 }
 
 .gallery-item {
