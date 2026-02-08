@@ -136,7 +136,7 @@ footer a:hover {
     width: 120%; 
     height: 100%;
     z-index: -1;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/fondo/two.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/fondo/three.jpg');
     background-size: cover;
     background-position: center;
     animation: sidePan 30s infinite alternate ease-in-out;
