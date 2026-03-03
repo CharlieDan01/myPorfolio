@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Lógica para cargar proyectos desde GitHub en un contenedor específico
 document.addEventListener("DOMContentLoaded", () => {
     // 1. ESCRIBE AQUÍ LOS NOMBRES DE TUS REPOS EXACTAMENTE COMO ESTÁN EN GITHUB
-    const myProjects = ["todolist", "WeatherWithApi"]; 
+    const myProjects = ["todolist", "WeatherWithApi","myPorfolio"]; 
     const githubUser = "CharlieDan01";
     const container = document.getElementById("github-projects-container");
 
