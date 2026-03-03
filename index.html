@@ -118,37 +118,44 @@
                 </div>
             </div>
         </section>
-
         <!--referencias-->
         <section id="stats" class="py-5 bg-dark text-white">
-        <div class="container">
-            <h2 class="text-center mb-5 fw-bold" data-i18n="references-title">References</h2>
-            
-            <div class="row align-items-center g-5 mb-5">
-                <div class="col-md-6 text-center">
-                    <h5 class="mb-4 text-info" data-i18n="rating-title">Califications</h5>
-                    <div style="max-width: 350px; margin: auto;">
-                        <canvas id="ratingChart"></canvas>
+            <div class="container">
+                <h5 class="display-5 fw-bold mb-4 text-center" data-i18n="references-title">References</h5>
+                
+                <div id="loading-spinner" class="text-center my-5">
+                    <div class="spinner-border text-info" style="width: 3rem; height: 3rem;" role="status"></div>
+                    <h5 class="mt-3 text-secondary" data-i18n="progressBar">Loading... Please wait</h5>
+                </div>
+
+                <div id="stats-content" class="d-none">
+                    <div class="row align-items-center g-5 mb-5">
+                        <div class="col-md-6 text-center">
+                            <h5 class="mb-4 text-info" data-i18n="rating-title">Califications</h5>
+                            <div style="max-width: 350px; margin: auto;">
+                                <canvas id="ratingChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 text-center">
+                            <h5 class="mb-4 text-info" data-i18n="service-title">Services Requested</h5>
+                            <div style="max-width: 100%; margin: auto;">
+                                <canvas id="serviceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-12 text-center">
+                            <h5 class="mb-4 text-warning" data-i18n="last-comments">Últimos Comentarios</h5>
+                            <div id="commentsList" class="d-flex flex-wrap justify-content-center gap-3">
+                                </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="col-md-6 text-center">
-                    <h5 class="mb-4 text-info" data-i18n="service-title">Services Requested</h5>
-                    <div style="max-width: 100%; margin: auto;">
-                        <canvas id="serviceChart"></canvas>
-                    </div>
-                </div>
             </div>
-
-            <div class="row mt-4">
-                <div class="col-12 text-center">
-                    <h5 class="mb-4 text-warning" data-i18n="last-comments">Últimos Comentarios</h5>
-                    <div id="commentsList" class="d-flex flex-wrap justify-content-center gap-3">
-                        </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
         <!--armado de computadoras-->
         <section id="builder" class="py-5 text-center">
             <div class="container mb-5">

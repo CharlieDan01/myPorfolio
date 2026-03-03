@@ -31,6 +31,7 @@ const translations = {
         "social-title": "Social Media",
         //referencias
         "references-title": "References",
+        "progressBar": "Loading... Please wait",
         "rating-title": "Califications",
         "service-title": "Services Requested",
         "last-comments": "Last Comments",
@@ -85,7 +86,9 @@ const translations = {
         "buildpc-contact-btn": "Cotiza con nosotros",
         //referencias
         "references-title":"Referencias",
+        "progressBar":"Por favor espera... Cargando",
         "rating-title": "Calificaciones",
+
         "service-title": "Servicios Solicitados",
         "buildpc-gallery-title": "Galería de Ensamblajes",
         "last-comments": "Últimos Comentarios",
@@ -198,17 +201,38 @@ document.addEventListener("DOMContentLoaded", () => {
 // Lógica para cargar datos de Google Sheets y renderizar un gráfico con Chart.js
 document.addEventListener("DOMContentLoaded", () => {
     const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRA4fpMr2qjo6QMyGm-tEACdHyPDMWhYAJ-mkYqNlmfijRoqIrLKVVSvB4ZIcWxZHhV6IWFN7DA0cRC/pub?gid=222894092&single=true&output=csv";
-    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(csvUrl + "&t=" + new Date().getTime())}`;
+    const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(csvUrl)}`;
 
-    // Capturamos los 3 contenedores
     const ratingCanvas = document.getElementById('ratingChart');
     const serviceCanvas = document.getElementById('serviceChart');
     const commentsList = document.getElementById('commentsList');
+    const totalClientsSpan = document.getElementById('totalClientsCount');
 
     if (!ratingCanvas || !serviceCanvas) return; 
-    
+
+    //Función para censurar y proteger la privacidad de los clientes ---
+    function censorName(fullName) {
+        if (!fullName || fullName === "Anónimo") return "Anónimo";
+        
+        // Separamos el nombre por espacios
+        const words = fullName.trim().split(/\s+/);
+        
+        // Si solo puso un nombre (ej. "Daniel"), lo devolvemos tal cual
+        if (words.length === 1) return words[0];
+        
+        // Tomamos el primer nombre y la inicial de la ÚLTIMA palabra escrita
+        const firstName = words[0];
+        const lastInitial = words[words.length - 1].charAt(0).toUpperCase();
+        
+        return `${firstName} ${lastInitial}.`;
+    }
+
     async function getData() {
         try {
+            // Capturamos el spinner y el contenedor de contenido
+            const spinner = document.getElementById('loading-spinner');
+            const content = document.getElementById('stats-content');
+
             const response = await fetch(proxyUrl);
             if (!response.ok) throw new Error("Error de red con el proxy.");
             const data = await response.text();
@@ -216,65 +240,73 @@ document.addEventListener("DOMContentLoaded", () => {
             const lines = data.split(/\r?\n/).filter(line => line.trim() !== "");
             const separator = lines[0].includes(";") ? ";" : ",";
             
-            // Contenedores para organizar la información
             const ratingCounts = { "5": 0, "4": 0, "3": 0, "2": 0, "1": 0 };
             const serviceCounts = {};
             const commentsArray = [];
+            
+            const totalResponses = lines.length - 1;
 
-            // Extraer datos fila por fila
+            if(totalClientsSpan && totalResponses > 0) {
+                totalClientsSpan.innerText = totalResponses;
+            }
+
             for (let i = 1; i < lines.length; i++) {
                 const regex = new RegExp(`${separator}(?=(?:(?:[^"]*"){2})*[^"]*$)`);
                 const cols = lines[i].split(regex);
                 
-                const rating = cols[2]?.replace(/"/g, "").trim();   // Columna C
-                const service = cols[3]?.replace(/"/g, "").trim();  // Columna D
-                const comment = cols[4]?.replace(/"/g, "").trim();  // Columna E
-                
-                // 1. Sumar Calificaciones
+                let rawName = cols[1]?.replace(/"/g, "").trim() || "";
+                let name = rawName === "" ? "Anónimo" : censorName(rawName);
+
+                const rating = cols[2]?.replace(/"/g, "").trim();          
+                const service = cols[3]?.replace(/"/g, "").trim();         
+                const comment = cols[4]?.replace(/"/g, "").trim();         
+
                 if(rating && ratingCounts[rating] !== undefined) {
                     ratingCounts[rating]++;
                 }
 
-                // 2. Sumar Servicios
                 if(service) {
                     serviceCounts[service] = (serviceCounts[service] || 0) + 1;
                 }
 
-                // 3. Guardar Comentarios (si no están vacíos)
                 if(comment && comment.length > 2) {
-                    commentsArray.push(comment);
+                    commentsArray.push({
+                        text: comment,
+                        author: name
+                    });
                 }
             }
-
-            // --- LLAMAR A LAS GRÁFICAS ---
             
-            // Gráfica de Dona (Calificaciones)
             renderDoughnutChart(
                 ['1 Estrella', '2 Estrellas', '3 Estrellas', '4 Estrellas', '5 Estrellas'], 
                 [ratingCounts["1"], ratingCounts["2"], ratingCounts["3"], ratingCounts["4"], ratingCounts["5"]]
             );
 
-            // Gráfica de Barras Horizontales (Servicios)
             renderServiceChart(Object.keys(serviceCounts), Object.values(serviceCounts));
 
-            // Dibujar los comentarios de texto
             renderComments(commentsArray);
+
+            // --- NUEVO: Ocultamos el spinner y mostramos las gráficas suavemente ---
+            if (spinner) spinner.classList.add('d-none');
+            if (content) content.classList.remove('d-none');
 
         } catch (error) {
             console.error("Fallo al graficar:", error);
+            // Si hay un error, mostramos un mensaje en lugar del spinner
+            const spinner = document.getElementById('loading-spinner');
+            if (spinner) {
+                spinner.innerHTML = `<p class="text-danger fw-bold">No se pudieron cargar las estadísticas en este momento.</p>`;
+            }
         }
     }
-
-    // --- FUNCIONES DE DIBUJO ---
-
+    // Función para renderizar el gráfico de calificaciones
     function renderDoughnutChart(labels, chartData) {
         new Chart(ratingCanvas.getContext('2d'), {
-            type: 'doughnut', // <--- ¡AQUÍ ESTÁ LA MAGIA DE LA DONA!
+            type: 'doughnut',
             data: {
                 labels: labels,
                 datasets: [{
                     data: chartData,
-                    // Colores desde el rojo (1) hasta el morado (5)
                     backgroundColor: ['#dc3545', '#fd7e14', '#ffc107', '#20c997', '#c4a4ff'],
                     borderWidth: 0,
                     hoverOffset: 4
@@ -288,7 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-
+    // Función para renderizar el gráfico de servicios solicitados
     function renderServiceChart(labels, chartData) {
         new Chart(serviceCanvas.getContext('2d'), {
             type: 'bar',
@@ -297,12 +329,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 datasets: [{
                     label: 'Cantidad',
                     data: chartData,
-                    backgroundColor: '#0dcaf0', // Azul claro (info)
+                    backgroundColor: '#0dcaf0',
                     borderRadius: 4
                 }]
             },
             options: {
-                indexAxis: 'y', // <--- Convierte las barras verticales en horizontales
+                indexAxis: 'y',
                 responsive: true,
                 plugins: { legend: { display: false } },
                 scales: {
@@ -312,21 +344,23 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-
+    // Función para renderizar los últimos comentarios de los clientes
     function renderComments(comments) {
         if(!commentsList) return;
         commentsList.innerHTML = "";
         
-        // Tomamos los últimos 4 comentarios más recientes
-        comments.reverse().slice(0, 4).forEach(text => {
+        comments.reverse().slice(0, 4).forEach(item => {
             const card = `
-                <div class="card bg-black border-secondary text-white p-3 m-2 shadow-sm" style="max-width: 250px; flex: 1 1 auto; border: 1px solid #444;">
-                    <p class="fst-italic mb-0 text-secondary">"${text}"</p>
+                <div class="card bg-black border-secondary text-white p-3 m-2 shadow-sm text-start" style="width: 280px; flex: 0 0 auto; border: 1px solid #444;">
+                    <p class="fst-italic mb-3 text-secondary lh-sm" style="font-size: 0.9em;">"${item.text}"</p>
+                    <div class="mt-auto border-top border-secondary pt-2">
+                        <small class="text-info fw-bold">— ${item.author}</small>
+                    </div>
                 </div>
             `;
             commentsList.innerHTML += card;
         });
     }
-
+    // Llamamos a la función para obtener los datos y renderizar los gráficos   
     getData();
 });
