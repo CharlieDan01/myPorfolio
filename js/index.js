@@ -31,6 +31,7 @@ const translations = {
         "social-title": "Social Media",
         //referencias
         "references-title": "References",
+        "clients-attended": "Clients Attended:",
         "progressBar": "Loading... Please wait",
         "rating-title": "Califications",
         "service-title": "Services Requested",
@@ -86,6 +87,7 @@ const translations = {
         "buildpc-contact-btn": "Cotiza con nosotros",
         //referencias
         "references-title":"Referencias",
+        "clients-attended":"Clientes atendidos:",
         "progressBar":"Por favor espera... Cargando",
         "rating-title": "Calificaciones",
 
