@@ -135,13 +135,54 @@
                     <div class="spinner-border text-info" style="width: 3rem; height: 3rem;" role="status"></div>
                     <h5 class="mt-3 text-secondary" data-i18n="progressBar">Loading... Please wait</h5>
                 </div>
-
+                
                 <div id="stats-content" class="d-none">
                     <div class="row align-items-center g-5 mb-5">
+                        
                         <div class="col-md-6 text-center">
                             <h5 class="mb-4 text-info" data-i18n="rating-title">Califications</h5>
-                            <div style="max-width: 350px; margin: auto;">
-                                <canvas id="ratingChart"></canvas>
+                            
+                            <div id="custom-rating" style="max-width: 350px; margin: auto;">
+                                <div class="d-flex align-items-center justify-content-center mb-4">
+                                    <h1 class="display-3 fw-bold text-primary me-4 mb-0" id="avgRatingNumber">0.0</h1>
+                                    <div class="text-start">
+                                        <div class="text-primary fs-5 mb-1" id="avgStars">
+                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                        </div>
+                                        <small class="text-secondary"><span id="totalRatingCount">0</span> calificaciones</small>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="progress flex-grow-1 me-3" style="height: 6px; background-color: #333;">
+                                        <div class="progress-bar bg-light" id="bar-5" role="progressbar" style="width: 0%"></div>
+                                    </div>
+                                    <span class="text-secondary" style="min-width: 35px; text-align: right;">5 <i class="bi bi-star-fill" style="font-size: 0.7rem;"></i></span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="progress flex-grow-1 me-3" style="height: 6px; background-color: #333;">
+                                        <div class="progress-bar bg-light" id="bar-4" role="progressbar" style="width: 0%"></div>
+                                    </div>
+                                    <span class="text-secondary" style="min-width: 35px; text-align: right;">4 <i class="bi bi-star-fill" style="font-size: 0.7rem;"></i></span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="progress flex-grow-1 me-3" style="height: 6px; background-color: #333;">
+                                        <div class="progress-bar bg-light" id="bar-3" role="progressbar" style="width: 0%"></div>
+                                    </div>
+                                    <span class="text-secondary" style="min-width: 35px; text-align: right;">3 <i class="bi bi-star-fill" style="font-size: 0.7rem;"></i></span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="progress flex-grow-1 me-3" style="height: 6px; background-color: #333;">
+                                        <div class="progress-bar bg-light" id="bar-2" role="progressbar" style="width: 0%"></div>
+                                    </div>
+                                    <span class="text-secondary" style="min-width: 35px; text-align: right;">2 <i class="bi bi-star-fill" style="font-size: 0.7rem;"></i></span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="progress flex-grow-1 me-3" style="height: 6px; background-color: #333;">
+                                        <div class="progress-bar bg-light" id="bar-1" role="progressbar" style="width: 0%"></div>
+                                    </div>
+                                    <span class="text-secondary" style="min-width: 35px; text-align: right;">1 <i class="bi bi-star-fill" style="font-size: 0.7rem;"></i></span>
+                                </div>
                             </div>
                         </div>
                         

@@ -200,38 +200,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetchProjects();
 });
-// Lógica para cargar datos de Google Sheets y renderizar un gráfico con Chart.js
+// Lógica para cargar datos de Google Sheets y renderizar estadísticas
 document.addEventListener("DOMContentLoaded", () => {
     const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRA4fpMr2qjo6QMyGm-tEACdHyPDMWhYAJ-mkYqNlmfijRoqIrLKVVSvB4ZIcWxZHhV6IWFN7DA0cRC/pub?gid=222894092&single=true&output=csv";
     const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(csvUrl)}`;
 
-    const ratingCanvas = document.getElementById('ratingChart');
     const serviceCanvas = document.getElementById('serviceChart');
     const commentsList = document.getElementById('commentsList');
     const totalClientsSpan = document.getElementById('totalClientsCount');
 
-    if (!ratingCanvas || !serviceCanvas) return; 
-
-    //Función para censurar y proteger la privacidad de los clientes ---
+    // Función para censurar y proteger la privacidad
     function censorName(fullName) {
         if (!fullName || fullName === "Anónimo") return "Anónimo";
-        
-        // Separamos el nombre por espacios
         const words = fullName.trim().split(/\s+/);
-        
-        // Si solo puso un nombre (ej. "Daniel"), lo devolvemos tal cual
         if (words.length === 1) return words[0];
-        
-        // Tomamos el primer nombre y la inicial de la ÚLTIMA palabra escrita
         const firstName = words[0];
         const lastInitial = words[words.length - 1].charAt(0).toUpperCase();
-        
         return `${firstName} ${lastInitial}.`;
     }
 
     async function getData() {
         try {
-            // Capturamos el spinner y el contenedor de contenido
             const spinner = document.getElementById('loading-spinner');
             const content = document.getElementById('stats-content');
 
@@ -272,57 +261,51 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 if(comment && comment.length > 2) {
-                    commentsArray.push({
-                        text: comment,
-                        author: name
-                    });
+                    commentsArray.push({ text: comment, author: name });
                 }
             }
             
-            renderDoughnutChart(
-                ['1 Estrella', '2 Estrellas', '3 Estrellas', '4 Estrellas', '5 Estrellas'], 
-                [ratingCounts["1"], ratingCounts["2"], ratingCounts["3"], ratingCounts["4"], ratingCounts["5"]]
-            );
+            // --- CÁLCULO DE PROMEDIO Y BARRAS DE ESTRELLAS ---
+            const totalStarsCount = ratingCounts["5"] + ratingCounts["4"] + ratingCounts["3"] + ratingCounts["2"] + ratingCounts["1"];
+            
+            if (totalStarsCount > 0) {
+                // Promedio matemático
+                const sumStars = (5 * ratingCounts["5"]) + (4 * ratingCounts["4"]) + (3 * ratingCounts["3"]) + (2 * ratingCounts["2"]) + (1 * ratingCounts["1"]);
+                const avgRating = (sumStars / totalStarsCount).toFixed(1);
+                
+                // Actualizar textos
+                const avgNumberEl = document.getElementById('avgRatingNumber');
+                const totalRatingEl = document.getElementById('totalRatingCount');
+                if(avgNumberEl) avgNumberEl.innerText = avgRating;
+                if(totalRatingEl) totalRatingEl.innerText = totalStarsCount;
 
-            renderServiceChart(Object.keys(serviceCounts), Object.values(serviceCounts));
+                // Rellenar barras (porcentaje)
+                for (let i = 5; i >= 1; i--) {
+                    const bar = document.getElementById(`bar-${i}`);
+                    if (bar) {
+                        const percentage = (ratingCounts[i.toString()] / totalStarsCount) * 100;
+                        bar.style.width = `${percentage}%`;
+                    }
+                }
+            }
 
+            // Renderizar la gráfica derecha y los comentarios
+            if(serviceCanvas) renderServiceChart(Object.keys(serviceCounts), Object.values(serviceCounts));
             renderComments(commentsArray);
 
-            // --- NUEVO: Ocultamos el spinner y mostramos las gráficas suavemente ---
+            // Ocultar spinner y mostrar contenido
             if (spinner) spinner.classList.add('d-none');
             if (content) content.classList.remove('d-none');
 
         } catch (error) {
-            console.error("Fallo al graficar:", error);
-            // Si hay un error, mostramos un mensaje en lugar del spinner
+            console.error("Fallo al cargar estadísticas:", error);
             const spinner = document.getElementById('loading-spinner');
             if (spinner) {
                 spinner.innerHTML = `<p class="text-danger fw-bold">No se pudieron cargar las estadísticas en este momento.</p>`;
             }
         }
     }
-    // Función para renderizar el gráfico de calificaciones
-    function renderDoughnutChart(labels, chartData) {
-        new Chart(ratingCanvas.getContext('2d'), {
-            type: 'doughnut',
-            data: {
-                labels: labels,
-                datasets: [{
-                    data: chartData,
-                    backgroundColor: ['#dc3545', '#fd7e14', '#ffc107', '#20c997', '#c4a4ff'],
-                    borderWidth: 0,
-                    hoverOffset: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { position: 'bottom', labels: { color: 'white' } }
-                }
-            }
-        });
-    }
-    // Función para renderizar el gráfico de servicios solicitados
+
     function renderServiceChart(labels, chartData) {
         new Chart(serviceCanvas.getContext('2d'), {
             type: 'bar',
@@ -346,7 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    // Función para renderizar los últimos comentarios de los clientes
+
     function renderComments(comments) {
         if(!commentsList) return;
         commentsList.innerHTML = "";
@@ -363,6 +346,6 @@ document.addEventListener("DOMContentLoaded", () => {
             commentsList.innerHTML += card;
         });
     }
-    // Llamamos a la función para obtener los datos y renderizar los gráficos   
+
     getData();
 });
