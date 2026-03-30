@@ -70,8 +70,8 @@ const translations = {
         "nav-faq": "Preguntas",
         //sobre mi
         "about-title": "Sobre Mí",
-        "title-description": "Bienvenido a mi portfolio web!",   
-        "about-description": "Soy un Ingeniero en Computación con pasión por crear aplicaciones web limpias y funcionales. Con experiencia en C#, Java y ASP.NET, disfruto construyendo soluciones que resuelven problemas del mundo real. Siempre estoy ansioso por aprender nuevas tecnologías y colaborar en proyectos emocionantes.",
+        "title-description": "Bienvenido a mi portafolio web!",   
+        "about-description": "Soy un Ingeniero en Informática con pasión por crear aplicaciones web limpias y funcionales. Con experiencia en C#, Java y ASP.NET, disfruto construyendo soluciones que resuelven problemas del mundo real. Siempre estoy ansioso por aprender nuevas tecnologías y colaborar en proyectos emocionantes.",
         "carreer": "Ingeniero en Informática",
         "name": "Hola, soy Daniel",
         //proyectos
@@ -221,6 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function getData() {
         try {
+            // Mostrar spinner y ocultar contenido mientras se cargan los datos 
             const spinner = document.getElementById('loading-spinner');
             const content = document.getElementById('stats-content');
 
@@ -240,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if(totalClientsSpan && totalResponses > 0) {
                 totalClientsSpan.innerText = totalResponses;
             }
-
+            // Procesar cada línea de datos (omitiendo la cabecera)
             for (let i = 1; i < lines.length; i++) {
                 const regex = new RegExp(`${separator}(?=(?:(?:[^"]*"){2})*[^"]*$)`);
                 const cols = lines[i].split(regex);
