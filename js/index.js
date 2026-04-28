@@ -14,6 +14,7 @@ const translations = {
         "nav-projects": "Projects",
         "nav-contact": "Contact",
         "nav-references": "References",
+        "nav-rating": "Rate Me",
         "nav-buildpc": "Build PC",
         "nav-skills": "Skills",
         "nav-faq": "FAQ",
@@ -25,6 +26,11 @@ const translations = {
         "name": "Hi, I'm Daniel",
         //proyectos
         "projects-title": "Projects",
+
+        //calificame
+        "rating-title": "Rate My Service",
+        "rating-description": "If you have worked with me, please consider leaving a rating and comment about your experience.",
+        "rating-btn": "Leave a Rating",
         //contacto
         "contact-title": "Contact Me",
         "contact-description": "If you’d like to work together, feel free to reach out!",
@@ -67,6 +73,7 @@ const translations = {
         "nav-projects": "Proyectos",
         "nav-contact": "Contacto",
         "nav-references": "Referencias",
+        "nav-rating": "Califícame",
         "nav-buildpc": "Ensamblaje de PC",
         "nav-skills": "Habilidades",
         "nav-faq": "Preguntas",
@@ -78,6 +85,10 @@ const translations = {
         "name": "Hola, soy Daniel",
         //proyectos
         "projects-title": "Proyectos",
+        //calificame
+        "calif-title": "Califica Mi Servicio",
+        "calif-description": "Si has trabajado conmigo, por favor considera dejar una calificación y comentario sobre tu experiencia.",
+        "calif-btn": "Dejar Calificación",
         //contacto  
         "contact-title": "Contáctame",
         "contact-description": "Si te gustaría trabajar conmigo, ¡no dudes en contactarme!",
