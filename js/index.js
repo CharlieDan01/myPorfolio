@@ -128,7 +128,7 @@ const translations = {
     }
 };
 
-let currentLang = "en";
+let currentLang = "es";
 // Función para traducir el contenido
 // Escuchar el clic en el botón de traducción
 document.addEventListener("DOMContentLoaded", () => {
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btnTranslate) {
         btnTranslate.addEventListener("click", () => {
             // Cambiar idioma
-            currentLang = currentLang === "en" ? "es" : "en";
+            currentLang = currentLang === "es" ? "en" : "es";
             
             // Buscar todos los elementos con data-i18n
             const elementsToTranslate = document.querySelectorAll("[data-i18n]");
