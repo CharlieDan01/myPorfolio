@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-// Lógica para cargar proyectos desde GitHub en un contenedor específico
+// Lógica para cargar proyectos desde GitHub en un contenedor
 document.addEventListener("DOMContentLoaded", () => {
     // 1. ESCRIBE AQUÍ LOS NOMBRES DE TUS REPOS EXACTAMENTE COMO ESTÁN EN GITHUB
     const myProjects = ["todolist", "WeatherWithApi","myPorfolio", "segurosBienestarIntegral"]; 
