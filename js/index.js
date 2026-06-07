@@ -216,7 +216,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // Lógica para cargar datos de Google Sheets y renderizar estadísticas
 document.addEventListener("DOMContentLoaded", () => {
     const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRA4fpMr2qjo6QMyGm-tEACdHyPDMWhYAJ-mkYqNlmfijRoqIrLKVVSvB4ZIcWxZHhV6IWFN7DA0cRC/pub?gid=222894092&single=true&output=csv";
-    const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(csvUrl)}`;
+    // Cambiamos a CORSProxy.io que es más estable que CodeTabs
+    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(csvUrl)}`;
 
     const serviceCanvas = document.getElementById('serviceChart');
     const commentsList = document.getElementById('commentsList');
