@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRA4fpMr2qjo6QMyGm-tEACdHyPDMWhYAJ-mkYqNlmfijRoqIrLKVVSvB4ZIcWxZHhV6IWFN7DA0cRC/pub?gid=222894092&single=true&output=csv";
     // Cambiamos a CORSProxy.io que es más estable que CodeTabs
-    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(csvUrl)}`;
+    const directUrl = `${csvUrl}&t=${new Date().getTime()}`;
 
     const serviceCanvas = document.getElementById('serviceChart');
     const commentsList = document.getElementById('commentsList');
@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const spinner = document.getElementById('loading-spinner');
             const content = document.getElementById('stats-content');
 
-            const response = await fetch(proxyUrl);
+            const response = await fetch(directUrl);
             if (!response.ok) throw new Error("Error de red con el proxy.");
             const data = await response.text();
 
